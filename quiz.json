@@ -1,0 +1,214 @@
+[
+    {
+        "title": "Kotlin คืออะไร?",
+        "options" : [
+            "ภาษาโปรแกรมที่พัฒนาโดย Microsoft",
+            "ภาษาโปรแกรมที่พัฒนาโดย Google",
+            "ภาษาโปรแกรมที่พัฒนาโดย JetBrains",
+            "ภาษาโปรแกรมที่พัฒนาโดย Oracle"
+        ],
+        "correct_answer" : 3
+    },
+    {
+        "title": "ฟีเจอร์ที่ Kotlin รองรับที่ทำให้มันต่างจาก Java คืออะไร?",
+        "options" : [
+            "การรองรับ Object-Oriented Programming เท่านั้น",
+            "การรองรับ Functional Programming",
+            "การรองรับภาษา SQL",
+            "การรองรับการพัฒนาแอป Android เท่านั้น"
+        ],
+        "correct_answer" : 2
+    },
+    {
+      "title": "คำสั่งใน Kotlin ที่ใช้ประกาศตัวแปรแบบไม่เปลี่ยนแปลง (immutable) คืออะไร?",
+        "options" : [
+            "val",
+            "var",
+            "let",
+            "const"
+        ],
+        "correct_answer" : 1  
+    },
+    {
+        "title": "คำสั่งใน Kotlin ที่ใช้ประกาศตัวแปรที่สามารถเปลี่ยนแปลงค่าได้คืออะไร?",
+          "options" : [
+              "val",
+              "var",
+              "let",
+              "const"
+          ],
+          "correct_answer" : 2  
+      },
+      {
+        "title": "การประกาศฟังก์ชันใน Kotlin ต้องการคีย์เวิร์ดใด?",
+          "options" : [
+              "func",
+              "function",
+              "fun",
+              "codefnst"
+          ],
+          "correct_answer" : 3  
+      },
+      {
+        "title": "ใน Kotlin การเข้าถึงสมาชิกของคลาสใน Kotlin จะใช้เครื่องหมายใด?",
+          "options" : [
+              ".",
+              "->",
+              "::",
+              "[]"
+          ],
+          "correct_answer" : 1  
+      },
+      {
+        "title": "การใช้คำสั่ง when ใน Kotlin ใช้แทนอะไรในภาษาโปรแกรมอื่นๆ?",
+          "options" : [
+              "if",
+              "switch",
+              "for",
+              "while"
+          ],
+          "correct_answer" : 2  
+      },
+      {
+        "title": "การประกาศค่าคงที่ใน Kotlin ใช้คีย์เวิร์ดอะไร?",
+          "options" : [
+              "const",
+              "let",
+              "final",
+              "val"
+          ],
+          "correct_answer" : 1  
+      },
+      {
+        "title": "วิธีการแปลงชนิดข้อมูลใน Kotlin จาก String เป็น Int คืออะไร?",
+          "options" : [
+                "string.toInt()",
+                "string.parseInt()",
+                "string.convertToInt()",
+                "vastring.int()"
+
+          ],
+          "correct_answer" : 1  
+      },
+      {
+        "title": "คำสั่งใน Kotlin ที่ใช้ในการเช็คค่าของตัวแปรว่าเป็น null หรือไม่ คืออะไร?",
+          "options" : [
+                "isNull()",
+                "nullCheck()",
+                "== null",
+                "checkNull()"
+
+          ],
+          "correct_answer" : 3  
+      },
+      {
+        "title": "ฟังก์ชัน apply ใน Kotlin ใช้ทำอะไร?",
+          "options" : [
+                "ใช้สำหรับการทำงานร่วมกับค่าสถานะ",
+                "ใช้ในการใช้งานหลายๆ ฟังก์ชันภายในบล็อก",
+                "ใช้ในการตรวจสอบเงื่อนไข",
+                "ใช้สำหรับการคืนค่า"
+
+          ],
+          "correct_answer" : 2  
+      },
+      {
+        "title": "Kotlin สามารถทำงานร่วมกับอะไรได้บ้าง?",
+          "options" : [
+                "Java",
+                "C++",
+                "Python",
+                "Ruby"
+
+          ],
+          "correct_answer" : 1  
+      },
+      {
+        "title": "ฟังก์ชันที่ใช้เพื่อทำให้ตัวแปรชนิด nullable ใน Kotlin คืออะไร?",
+          "options" : [
+                "nullable()",
+                "?",
+                "nullableType()",
+                "??"
+
+          ],
+          "correct_answer" : 2  
+      },
+      {
+        "title": "ใน Kotlin วิธีที่ใช้ในการจัดการกับค่าที่เป็น null โดยไม่เกิดข้อผิดพลาดคืออะไร?",
+          "options" : [
+                "safe call (?.)",
+                "non-null assertion (!!)",
+                "if statement",
+                "checkNull()"
+
+          ],
+          "correct_answer" : 1  
+      },
+      {
+        "title": "data class ใน Kotlin ใช้เพื่ออะไร?",
+          "options" : [
+                "สร้างคลาสที่ไม่มีตัวแปร",
+                "สร้างคลาสที่ใช้ในการเก็บข้อมูล",
+                "สร้างคลาสที่สามารถมีฟังก์ชันเดียวเท่านั้น",
+                "สร้างคลาสที่ไม่สามารถใช้ในฐานข้อมูล"
+
+          ],
+          "correct_answer" : 2  
+      },
+      {
+        "title": "วิธีการสร้างออบเจ็กต์ใหม่ใน Kotlin คืออะไร?",
+          "options" : [
+                "new ClassName()",
+                "ClassName()",
+                "ClassName.create()",
+                "newObject(ClassName())"
+
+          ],
+          "correct_answer" : 2  
+      },
+      {
+        "title": "ฟังก์ชัน let ใน Kotlin ใช้ทำอะไร?",
+          "options" : [
+                "ใช้ในการตรวจสอบค่าของตัวแปร",
+                "ใช้เพื่อรับค่าในบล็อกของฟังก์ชัน",
+                "ใช้เพื่อเช็คว่าตัวแปรเป็น null หรือไม่",
+                "ใช้เพื่อกำหนดค่าคงที่"
+
+          ],
+          "correct_answer" : 2  
+      },
+      {
+        "title": "ใน Kotlin คำสั่งใดที่ใช้ในการสลับค่าระหว่างตัวแปร?",
+          "options" : [
+                "swap()",
+                "exchange()",
+                "a, b = b, a",
+                "switch()"
+
+          ],
+          "correct_answer" : 3  
+      },
+      {
+        "title": "ฟังก์ชัน range ใน Kotlin ใช้ทำอะไร?",
+          "options" : [
+                "สร้างช่วงตัวเลขจากค่าต่ำสุดถึงค่าสูงสุด",
+                "สร้างตัวแปรชนิดใหม่",
+                "เปลี่ยนประเภทข้อมูล",
+                "คำนวณผลลัพธ์ระหว่างตัวเลข"
+
+          ],
+          "correct_answer" : 1  
+      },
+      {
+        "title": "ใน Kotlin การใช้ !! ใช้สำหรับอะไร?",
+          "options" : [
+                "เช็คว่าเป็นค่า null หรือไม่",
+                "สร้างตัวแปรใหม่",
+                "ยืนยันว่าไม่เป็น null และจะทำให้เกิดข้อผิดพลาดถ้าเป็น null",
+                "แปลงค่าเป็น null"
+
+          ],
+          "correct_answer" : 3  
+      }
+]
