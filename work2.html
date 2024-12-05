@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Work2</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #quizBox {
+            display: none;
+        }
+
+        .question {
+            margin: 4em;
+        }
+
+        .answer-option {
+            cursor: pointer;
+        }
+
+        .result {
+            margin: 0.5em;
+            display: none;
+        }
+
+        .quiz-container {
+            background: #ffffff;
+            border-radius: 0.5em;
+            padding: 60px;
+        }
+
+        .btn-lg {
+            font-size: x-large;
+            padding: 20px 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid text-white text-center">
+        <h1 class="text-white bg-dark p-5 text-center">แบบทดสอบ</h1>
+    </div>
+
+    <div class="container mt-5">
+        <div id="startBox" class="text-center">
+            <div class="quiz-container text-center">
+                <h2>แบบทดสอบมีทั้งหมด 20 ข้อ</h2>
+                <button class="btn-secondary btn" id="btnStart">เริ่มทำแบบทดสอบ</button>
+            </div>
+        </div>
+        <div id="quizBox">
+            <div id="quizListBox"></div>
+            <div class="text-center">
+                <button class="btn-success btn mt-5" id="btnCheckAnswer">ตรวจคำตอบ</button>
+            </div>
+        </div>
+
+        <div class="result text-center mt-5">
+            <div class="alert alert-info py-4">
+                <h3 class="score-display">กำลังคำนวณคะแนน...</h3>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+            let quizlist = [];
+
+            // โหลดข้อมูลจาก JSON
+            $.getJSON("quiz.json", (data) => {
+                quizlist = data;
+                console.log("Quiz loaded successfully:", quizlist);
+            }).fail(() => {
+                alert("Unable to load quiz data.");
+            });
+
+            // เริ่มต้นทำแบบทดสอบ
+            $("#btnStart").click(function () {
+                if (quizlist.length === 0) {
+                    alert("Quiz data is still loading. Please try again.");
+                    return;
+                }
+                $("#startBox").hide();
+                $("#quizBox").fadeIn();
+                displayQuizList();
+            });
+
+            // ฟังก์ชันแสดงคำถาม
+            function displayQuizList() {
+                $("#quizListBox").empty();
+                quizlist.forEach((question, index) => displayQuiz(index, question));
+            }
+
+            // สร้าง HTML สำหรับคำถามแต่ละข้อ
+            function displayQuiz(index, question) {
+                const html = `
+                <div class="card mb-3">
+                    <div class="card-header" id="question${index}">
+                        <h5><strong>Question ${index + 1}:</strong> ${question.title}</h5>
+                    </div>
+                    <div class="card-body">
+                        ${question.options.map((option, i) => `
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="q${index}" value="${i + 1}" id="q${index}o${i}" aria-describedby="question${index}">
+                                <label class="form-check-label" for="q${index}o${i}">
+                                    ${i + 1}. ${option}
+                                </label>
+                            </div>
+                        `).join("")}
+                    </div>
+                </div>`;
+                $("#quizListBox").append(html);
+            }
+
+            // ตรวจสอบคำตอบ
+            $("#btnCheckAnswer").click(function () {
+                if (quizlist.length === 0) {
+                    alert("คุณยังไม่ทำแบบทดสอบ กรุณาตรวจสอบใหม่อีกครั้ง");
+                    return;
+                }
+
+                let score = 0;
+                let unanswered = 0;
+
+                quizlist.forEach((question, index) => {
+                    const selectedAnswer = $(`input[name="q${index}"]:checked`).val();
+                    if (selectedAnswer == undefined) {
+                        unanswered++;
+                    } else if (parseInt(selectedAnswer) === question.correct_answer) {
+                        score++;
+                    }
+                });
+
+                if (unanswered > 0 && !confirm(`คุณต้องการข้าม ${unanswered} คำถาม คุณต้องการส่งคำตอบเลยใช่ไหม?`)) {
+                    return;
+                }
+
+                $("#quizBox").fadeOut();
+                $(".result")
+                    .html(`
+                        <div class="alert alert-${score >= quizlist.length / 2 ? "success" : "danger"}" aria-live="polite">
+                            <h3>Your Score: ${score}/${quizlist.length}</h3>
+                            <p>${score >= quizlist.length / 2 ? "ดีเยี่ยม! คุณเก่งสุดๆ." : "ไม่เป็นไร! ลองใหม่อีกครั้ง"}</p>
+                            ${unanswered > 0 ? `<p>คุณข้าม ${unanswered} คำถาม</p>` : ""}
+                        </div>
+                    `)
+                    .fadeIn();
+            });
+        });
+    </script>
+</body>
+
+</html>
