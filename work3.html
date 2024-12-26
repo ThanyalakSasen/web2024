@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body class="p-3 mb-2 bg-light-subtle text-info-emphasis">
+
+    <div id="myapp" class="container p-4  "></div>
+
+    <script type="text/babel">
+        class App extends React.Component {
+            constructor() {
+                super();
+                this.state = {
+                    qlist: [],
+                    status: 0,
+                    answers: {},
+                    score: 0,
+                };
+            }
+
+            async componentDidMount() {
+                // ตัวเอาข้อมูลจาก json
+                const res = await fetch("quiz2.json");
+                const data = await res.json();
+                this.setState({ qlist: data });
+            }
+
+            checkAnswer = () => { //ตัวตรวจ
+                const { qlist, answers } = this.state;
+                let score = 0;
+                qlist.forEach((q, i) => {
+                    if (q.answer === parseInt(answers[`q${i}`])) {
+                        score++;
+                    }
+                });
+                this.setState({ status: 2, score });
+            };
+
+            handleAnswerChange = (qIndex, value) => {
+                this.setState((prevState) => ({
+                    answers: {
+                        ...prevState.answers,
+                        [`q${qIndex}`]: value,
+                    },
+                }));
+            };
+
+            render() {
+                const { status, qlist, score } = this.state;
+                return (//ส่วนที่จะแสดงผล
+                    <div className="card">
+                        <div className="container-fluid p-5 bg-secondary text-white text-center ">
+                            <h4 class="fw-bold ">แบบทดสอบออนไลน์ รายวิชา : วิยุตคณิตและการประยุกต์ (ReactJS)</h4>
+                        </div>
+                        <div className="card-body">
+                            {status === 0 && (
+                                <div className="text-center">
+                                    <button
+                                        className="btn btn-warning" onClick={() => this.setState({ status: 1 })}>
+                                        เริ่มทำแบบทดสอบ
+                                    </button>
+                                </div>
+                            )}
+
+                            {status === 1 && (  //ส่วนของคำถามและตัวเลือกมีstatus=1
+                                <div >
+                                    {qlist.map((q, i) => (
+                                        <div key={i} className="mb-4 ">
+                                            <h5 class="fw-medium">{i + 1}. {q.question}</h5>
+                                            {q.options.map((option, index) => (
+                                                <div key={index}>
+                                                    <input type="radio" name={`q${i}`} value={index + 1}
+                                                        onChange={(e) => this.handleAnswerChange(i, parseInt(e.target.value))}
+                                                    />
+                                                    <label className="ms-2">{option}</label>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    ))}
+                                    <div class="text-center mb-3 ">
+                                        <button
+                                            className="btn btn-success " onClick={this.checkAnswer}>
+                                            ตรวจคำตอบ
+                                        </button>
+                                    </div>
+                                </div>
+                            )}
+
+                            {status === 2 && ( //หน้ารวมคะแนน status คือ 2
+                                <div className="text-center">
+                                    <h5>คุณได้คะแนน: {score} / {qlist.length}</h5>
+                                    <button
+                                        className="btn btn-secondary" onClick={() => this.setState({ status: 1, answers: {}, score: 0 })}>
+                                        ทำแบบทดสอบอีกครั้ง
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                        <div className="card-footer text-sm-center">
+                            <p>By 663380560-5   Thanyalak Sasen<br/>College of Computing, Khon Kaen University
+                            </p>
+                        </div>
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.render(<App/>, document.getElementById("myapp"));
+    </script>
+</body>
+
+</html>
