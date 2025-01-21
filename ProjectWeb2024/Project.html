@@ -11,19 +11,30 @@
 </head>
 <body>
   <a-scene>
-    <a-entity id="camera" camera wasd-controls look-controls position="2.52 7 100">
+    <!-- <a-entity id="camera" camera wasd-controls look-controls position="2.52 7 100">
       <a-cursor color="red" fuse="true" fuse-timeout="1500"></a-cursor>
-    </a-entity>
-    <a-entity camera look-controls touch-controls></a-entity>
-
+    </a-entity> -->
     
-    <a-sky color="#fffff"></a-sky>
+    
 
-    <a-entity gltf-model="model/venue_stage.glb" scale="3 3 3" position="-1 -3 0"></a-entity>
-    <a-entity gltf-model="model/apple_logo.glb" scale="0.5 0.5 0.5" position="-1 8 -31"></a-entity> 
-    <a-entity gltf-model="model/apple_logo.glb" rotation="0 -36 0" scale="0.3 0.3 0.3" position="62 5 -16"></a-entity> 
+    <a-scene>
+      <a-entity id="camera" camera wasd-controls look-controls position="2.52 7 -20">
+        <a-cursor color="red" fuse="true" fuse-timeout="1500"></a-cursor>
+      </a-entity>
+      
+      <a-sky color="#fffff"></a-sky>
+  
+      <a-entity gltf-model="model/venue_stage.glb" scale="3 3 3" position="-1 -3 0"></a-entity>
+      <a-entity gltf-model="model/apple_logo.glb" scale="0.5 0.5 0.5" position="-1 8 -31"></a-entity>
+      <a-entity gltf-model="model/screen_tv.glb" scale="5 5 5" position="-26 7.5 -31"></a-entity>
+      <a-entity gltf-model="model/screen_tv.glb" scale="5 5 5" position="26 7.5 -31"></a-entity>
+>
+      <a-video src="VDO/Sept.2022.mp4" position="-26 11 -30.9" width="12.25" height="6.55" autoplay="true" loop="true"></a-video>
+      <a-video src="VDO/I14.mp4" position="26 11 -30.9" width="12.25" height="6.55" autoplay="true" loop="true"></a-video>
 
-    <a-text value="iPhone14 Present" position="0 8 0" color="black" width="10px"
+    <!-- <a-entity gltf-model="model/flatscreen_tv.glb" scale="1 1 1" position="-1 -3 0"></a-entity> -->
+
+    <a-text value="iPhone14" position="1 8 0" color="black" width="10px"
     font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
 
     <a-entity gltf-model="Iphone_new/iphone_14_purple_5g.glb" scale="10.5 10.5 10.5" position="-1 5.5 0"
@@ -50,7 +61,7 @@
     <a-entity gltf-model="model/luxuryzwhite.glb" rotation="0 90 0" scale="10 10 10" position="4.5 0 0" ></a-entity>
 
 
-    <a-text value="AirPod Pro Present" position="12 8 0" color="black" width="10px"
+    <a-text value="AirPod Pro" position="12.5 8 0" color="black" width="10px"
     font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
     <a-entity gltf-model="Iphone_new/airpods_pro.glb" scale="0.18 0.18 0.18" position="13.5 5 0"
       animation="property: rotation; to: 0 360 0; dur: 3000; easing: linear; loop: true"
@@ -63,7 +74,7 @@
     <a-entity gltf-model="model/luxuryzwhite.glb" rotation="0 90 0" scale="10 10 10" position="14 0 0" ></a-entity>
 
 
-    <a-text value="Apple Watch Series8 Present" position="-16 8 0" color="black" width="10px"
+    <a-text value="Apple Watch Series8" position="-15 8 0" color="black" width="10px"
       font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
     <a-entity gltf-model="Iphone_new/apple_watch_series.glb" scale="13 13 13" position="-11 5 0"
         animation="property: rotation; to: 0 360 0; dur: 3000; easing: linear; loop: true"
@@ -90,7 +101,7 @@
     <a-entity gltf-model="model/casual_male-architectural_updated.glb" animation-mixer="" rotation="0 200 0" scale="4 4 4" position="0 -2 40" ></a-entity>
 
 
-    <a-text value="Macbook Air2 Present" position="-29.2 8 0" color="black" width="10px"
+    <a-text value="Macbook" position="-29.2 8 0" color="black" width="10px"
       font="https://cdn.aframe.io/fonts/Exo2Bold.fnt"></a-text>
     <a-entity gltf-model="Iphone_new/macbookairm2.glb" scale="1 1 1" position="-25 5 0"
       animation="property: rotation; to: 0 360 0; dur: 3000; easing: linear; loop: true"></a-entity>
